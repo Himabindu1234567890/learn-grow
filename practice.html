@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SQL Query Practice | Himabindu Royal</title>
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f6f7fb;
+    color: #172033;
+}
+
+.container {
+    width: 92%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 18px 0;
+}
+
+.navbar-inner {
+    width: 92%;
+    max-width: 1100px;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #5b4bdb;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #555f70;
+    font-weight: 600;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    background: linear-gradient(
+        135deg,
+        #eeebff,
+        #ffffff
+    );
+
+    padding: 70px 0;
+    text-align: center;
+}
+
+.hero-label {
+    color: #5b4bdb;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin: 15px 0;
+}
+
+.hero h1 span {
+    color: #5b4bdb;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: auto;
+    color: #667085;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.stats {
+    width: 700px;
+    max-width: 100%;
+    margin: 35px auto 0;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.stat {
+    background: white;
+    border: 1px solid #e3e6ed;
+    border-radius: 12px;
+    padding: 18px;
+}
+
+.stat strong {
+    display: block;
+    font-size: 27px;
+    color: #5b4bdb;
+}
+
+.stat span {
+    color: #687386;
+    font-size: 14px;
+}
+
+
+/* =========================
+   PRACTICE
+========================= */
+
+.practice-section {
+    padding: 60px 0;
+}
+
+
+/* FILTERS */
+
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.filter {
+    border: 1px solid #d8dce5;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.filter.active {
+    background: #5b4bdb;
+    color: white;
+}
+
+
+/* CARD */
+
+.practice-card {
+    background: white;
+    border: 1px solid #e0e4eb;
+    border-radius: 18px;
+    padding: 35px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.06);
+}
+
+
+/* HEADER */
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.level {
+    background: #e9e6ff;
+    color: #5141c9;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+/* QUESTION */
+
+.practice-card h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.description {
+    color: #667085;
+    margin-bottom: 25px;
+}
+
+
+/* TABLE */
+
+.table-box {
+    background: #f4f5f8;
+    border: 1px solid #e0e3e9;
+    padding: 18px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.table-title {
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.table-title code {
+    color: #5b4bdb;
+}
+
+.columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.column {
+    background: white;
+    border: 1px solid #dfe2e8;
+    border-radius: 6px;
+    padding: 5px 9px;
+    font-family: monospace;
+    font-size: 13px;
+}
+
+
+/* EDITOR */
+
+.editor-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 250px;
+
+    background: #111827;
+    color: #e5e7eb;
+
+    border: 2px solid #222c3d;
+    border-radius: 10px;
+
+    padding: 20px;
+
+    font-family: monospace;
+    font-size: 15px;
+
+    resize: vertical;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #5b4bdb;
+}
+
+
+/* FEEDBACK */
+
+.feedback {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.feedback.correct {
+    display: block;
+    background: #e9f8ef;
+    color: #19743d;
+}
+
+.feedback.wrong {
+    display: block;
+    background: #fff0f0;
+    color: #a33a3a;
+}
+
+
+/* ANSWER */
+
+.answer {
+    display: none;
+    margin-top: 18px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+.answer.show {
+    display: block;
+}
+
+.answer-title {
+    background: #e9e6ff;
+    padding: 12px 16px;
+    font-weight: bold;
+    color: #4e3bb5;
+}
+
+.answer pre {
+    margin: 0;
+    padding: 20px;
+    background: #111827;
+    color: white;
+
+    font-family: monospace;
+    white-space: pre-wrap;
+    overflow-x: auto;
+}
+
+.answer-note {
+    padding: 12px 16px;
+    background: #f5f6fa;
+    color: #667085;
+}
+
+
+/* BUTTONS */
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+button {
+    font-family: inherit;
+}
+
+.check,
+.show-answer,
+.clear,
+.next {
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.check {
+    background: #5b4bdb;
+    color: white;
+}
+
+.show-answer {
+    background: #fff2c9;
+    color: #795400;
+}
+
+.clear {
+    background: #edf0f4;
+    color: #4e596b;
+}
+
+.next {
+    background: #172033;
+    color: white;
+    margin-left: auto;
+}
+
+
+/* PROGRESS */
+
+.progress-area {
+    margin-top: 25px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    color: #667085;
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+.progress-bar {
+    height: 8px;
+    background: #e1e4ea;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: #5b4bdb;
+    width: 4%;
+}
+
+
+/* =========================
+   CTA
+========================= */
+
+.cta-section {
+    background: #111827;
+    padding: 65px 0;
+    color: white;
+}
+
+.cta {
+    background: #1c2636;
+    border: 1px solid #303b4e;
+    border-radius: 18px;
+    padding: 35px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.cta-label {
+    color: #aaa1ff;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.cta h2 {
+    font-size: 30px;
+    margin: 8px 0;
+}
+
+.cta p {
+    color: #b8c0ce;
+}
+
+.price {
+    text-align: center;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #8f98a8;
+    margin-right: 8px;
+}
+
+.new-price {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.course-button {
+    display: inline-block;
+    margin-top: 12px;
+
+    background: #5b4bdb;
+    color: white;
+
+    padding: 12px 20px;
+    border-radius: 8px;
+
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+/* =========================
+   COMPLETE
+========================= */
+
+.completed {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.completed-icon {
+    font-size: 55px;
+}
+
+.completed h2 {
+    font-size: 30px;
+    margin: 10px 0;
+}
+
+.final-score {
+    color: #5b4bdb;
+    font-size: 50px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #111827;
+    color: #aeb7c7;
+    padding: 25px;
+}
+
+.footer-inner {
+    width: 92%;
+    max-width: 1100px;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width: 700px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .practice-card {
+        padding: 22px;
+    }
+
+    .question-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .practice-card h2 {
+        font-size: 23px;
+    }
+
+    .next {
+        margin-left: 0;
+    }
+
+    .cta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="navbar-inner">
+
+        <div class="logo">
+            Himabindu <span>Royal</span>
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="index.html#offers">
+                What I Offer
+            </a>
+
+            <a href="index.html#course">
+                Courses
+            </a>
+
+            <a href="practice.html">
+                SQL Practice
+            </a>
+
+            <a href="index.html#contact">
+                Contact
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="hero-label">
+            SQL QUERY PRACTICE
+        </div>
+
+
+        <h1>
+            Practice SQL.
+            <br>
+            <span>Build Confidence.</span>
+        </h1>
+
+
+        <p>
+
+            Practice SQL queries from beginner level
+            to interview level and check your answers.
+
+        </p>
+
+
+        <div class="stats">
+
+            <div class="stat">
+
+                <strong id="questionNumber">
+                    1
+                </strong>
+
+                <span>
+                    Question
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong id="score">
+                    0
+                </strong>
+
+                <span>
+                    Score
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>
+                    25
+                </strong>
+
+                <span>
+                    Questions
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= PRACTICE ================= -->
+
+<section class="practice-section">
+
+    <div class="container">
+
+
+        <div class="filters">
+
+            <button
+                class="filter active"
+                onclick="filterQuestions('all', this)">
+
+                All
+
+            </button>
+
+
+            <button
+                class="filter"
+                onclick="filterQuestions('beginner', this)">
+
+                Beginner
+
+            </button>
+
+
+            <button
+                class="filter"
+                onclick="filterQuestions('intermediate', this)">
+
+                Intermediate
+
+            </button>
+
+
+            <button
+                class="filter"
+                onclick="filterQuestions('interview', this)">
+
+                Interview
+
+            </button>
+
+        </div>
+
+
+
+        <div class="practice-card"
+             id="practiceCard">
+
+
+            <div class="question-header">
+
+                <span
+                    class="level"
+                    id="level">
+
+                    Beginner
+
+                </span>
+
+
+                <span id="counter">
+                    Question 1 of 25
+                </span>
+
+            </div>
+
+
+            <h2 id="title">
+                Loading...
+            </h2>
+
+
+            <p
+                class="description"
+                id="description">
+
+            </p>
+
+
+            <div class="table-box">
+
+                <div class="table-title">
+
+                    Table:
+
+                    <code id="table">
+                        employees
+                    </code>
+
+                </div>
+
+
+                <div
+                    class="columns"
+                    id="columns">
+
+                </div>
+
+            </div>
+
+
+            <label
+                class="editor-label">
+
+                Write your SQL query:
+
+            </label>
+
+
+            <textarea
+                id="sql"
+                placeholder="Write your SQL query here..."></textarea>
+
+
+            <div
+                id="feedback"
+                class="feedback">
+
+            </div>
+
+
+            <div
+                id="answer"
+                class="answer">
+
+            </div>
+
+
+            <div class="buttons">
+
+                <button
+                    class="check"
+                    onclick="checkAnswer()">
+
+                    ✓ Check Answer
+
+                </button>
+
+
+                <button
+                    class="show-answer"
+                    onclick="showAnswer()">
+
+                    Show Answer
+
+                </button>
+
+
+                <button
+                    class="clear"
+                    onclick="clearAnswer()">
+
+                    Clear
+
+                </button>
+
+
+                <button
+                    class="next"
+                    onclick="nextQuestion()">
+
+                    Next Question →
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="progress-area">
+
+            <div class="progress-info">
+
+                <span>
+                    Progress
+                </span>
+
+                <span id="progressText">
+                    4%
+                </span>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress"
+                    id="progress">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta-section">
+
+    <div class="container">
+
+        <div class="cta">
+
+            <div>
+
+                <div class="cta-label">
+                    WANT MORE PRACTICE?
+                </div>
+
+
+                <h2>
+                    Prepare for SQL Interviews
+                </h2>
+
+
+                <p>
+                    Get recorded SQL videos,
+                    interview questions,
+                    notes and practice questions.
+                </p>
+
+            </div>
+
+
+            <div class="price">
+
+                <div>
+
+                    <span class="old-price">
+                        ₹499
+                    </span>
+
+                    <span class="new-price">
+                        ₹299
+                    </span>
+
+                </div>
+
+
+                <a
+                    href="index.html#contact"
+                    class="course-button">
+
+                    Get Course Details
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-inner">
+
+        <div>
+
+            <strong>
+                Himabindu Royal
+            </strong>
+
+            <br>
+
+            SQL Learning & Interview Preparation
+
+        </div>
+
+
+        <div>
+
+            © <span id="year"></span>
+            Himabindu Royal
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<script>
+
+/* ==========================================
+   QUESTIONS
+========================================== */
+
+const questions = [
+
+    {
+        level: "beginner",
+        title: "Select all employees",
+        description: "Display all columns from the employees table.",
+        table: "employees",
+        columns: ["employee_id", "name", "salary", "department_id"],
+        answer: "SELECT * FROM employees;",
+        keywords: ["select", "from", "employees"]
+    },
+
+    {
+        level: "beginner",
+        title: "Select employee names",
+        description: "Display only the name column.",
+        table: "employees",
+        columns: ["employee_id", "name", "salary"],
+        answer: "SELECT name FROM employees;",
+        keywords: ["select", "name", "from", "employees"]
+    },
+
+    {
+        level: "beginner",
+        title: "Find salary above 50000",
+        description: "Find employees whose salary is greater than 50000.",
+        table: "employees",
+        columns: ["employee_id", "name", "salary"],
+        answer: "SELECT * FROM employees WHERE salary > 50000;",
+        keywords: ["select", "from", "employees", "where", "salary", "50000"]
+    },
+
+    {
+        level: "beginner",
+        title: "Find IT employees",
+        description: "Find employees who belong to the IT department.",
+        table: "employees",
+        columns: ["employee_id", "name", "department"],
+        answer: "SELECT * FROM employees WHERE department = 'IT';",
+        keywords: ["select", "from", "employees", "where", "department", "it"]
+    },
+
+    {
+        level: "beginner",
+        title: "Salary below 30000",
+        description: "Find employees whose salary is less than 30000.",
+        table: "employees",
+        columns: ["employee_id", "name", "salary"],
+        answer: "SELECT * FROM employees WHERE salary < 30000;",
+        keywords: ["select", "from", "employees", "where", "salary", "30000"]
+    },
+
+    {
+        level: "beginner",
+        title: "Sort by salary",
+        description: "Display employees from highest salary to lowest salary.",
+        table: "employees",
+        columns: ["employee_id", "name", "salary"],
+        answer: "SELECT * FROM employees ORDER BY salary DESC;",
+        keywords: ["select", "from", "employees", "order", "by", "salary", "desc"]
+    },
+
+    {
+        level: "beginner",
+        title: "Find unique departments",
+        description: "Display each department only once.",
+        table: "employees",
+        columns: ["employee_id", "department"],
+        answer: "SELECT DISTINCT department FROM employees;",
+        keywords: ["select", "distinct", "department", "from", "employees"]
+    },
+
+    {
+        level: "beginner",
+        title: "Find employees between salaries",
+        description: "Find employees with salary between 30000 and 60000.",
+        table: "employees",
+        columns: ["employee_id", "name", "salary"],
+        answer: "SELECT * FROM employees WHERE salary BETWEEN 30000 AND 60000;",
+        keywords: ["select", "from", "employees", "where", "salary", "between", "30000", "60000"]
+    },
+
+    {
+        level: "beginner",
+        title: "Names starting with A",
+        description: "Find employees whose names start with A.",
+        table: "employees",
+        columns: ["employee_id", "name"],
+        answer: "SELECT * FROM employees WHERE name LIKE 'A%';",
+        keywords: ["select", "from", "employees", "where", "name", "like"]
+    },
+
+    {
+        level: "beginner",
+        title: "Count employees",
+        description: "Find the total number of employees.",
+        table: "employees",
+        columns: ["employee_id", "name"],
+        answer: "SELECT COUNT(*) FROM employees;",
+        keywords: ["select", "count", "from", "employees"]
+    },
+
+    {
+        level: "intermediate",
+        title: "Find average salary",
+        description: "Calculate the average employee salary.",
+        table: "employees",
+        columns: ["employee_id", "salary"],
+        answer: "SELECT AVG(salary) FROM employees;",
+        keywords: ["select", "avg", "salary", "from", "employees"]
+    },
+
+    {
+        level: "intermediate",
+        title: "Find maximum salary",
+        description: "Find the highest salary.",
+        table: "employees",
+        columns: ["employee_id", "salary"],
+        answer: "SELECT MAX(salary) FROM employees;",
+        keywords: ["select", "max", "salary", "from", "employees"]
+    },
+
+    {
+        level: "intermediate",
+        title: "Find minimum salary",
+        description: "Find the lowest salary.",
+        table: "employees",
+        columns: ["employee_id", "salary"],
+        answer: "SELECT MIN(salary) FROM employees;",
+        keywords: ["select", "min", "salary", "from", "employees"]
+    },
+
+    {
+        level: "intermediate",
+        title: "Find total salary",
+        description: "Calculate the total salary.",
+        table: "employees",
+        columns: ["employee_id", "salary"],
+        answer: "SELECT SUM(salary) FROM employees;",
+        keywords: ["select", "sum", "salary", "from", "employees"]
+    },
+
+    {
+        level: "intermediate",
+        title: "Count employees by department",
+        description: "Display department and employee count.",
+        table: "employees",
+        columns: ["employee_id", "department"],
+        answer: "SELECT department, COUNT(*) FROM employees GROUP BY department;",
+        keywords: ["select", "department", "count", "from", "employees", "group", "by"]
+    },
+
+    {
+        level: "intermediate",
+        title: "Departments with average salary above 50000",
+        description: "Find departments whose average salary is greater than 50000.",
+        table: "employees",
+        columns: ["department", "salary"],
+        answer: "SELECT department, AVG(salary) FROM employees GROUP BY department HAVING AVG(salary) > 50000;",
+        keywords: ["select", "department", "avg", "salary", "group", "by", "having", "50000"]
+    },
+
+    {
+        level: "intermediate",
+        title: "Employees from IT or HR",
+        description: "Find employees from IT or HR departments.",
+        table: "employees",
+        columns: ["employee_id", "name", "department"],
+        answer: "SELECT * FROM employees WHERE department IN ('IT', 'HR');",
+        keywords: ["select", "from", "employees", "where", "department", "in", "it", "hr"]
+    },
+
+    {
+        level: "intermediate",
+        title: "Find NULL manager IDs",
+        description: "Find employees who do not have a manager.",
+        table: "employees",
+        columns: ["employee_id", "name", "manager_id"],
+        answer: "SELECT * FROM employees WHERE manager_id IS NULL;",
+        keywords: ["select", "from", "employees", "where", "manager_id", "is", "null"]
+    },
+
+    {
+        level: "intermediate",
+        title: "Join employees and departments",
+        description: "Display employee names and department names.",
+        table: "employees + departments",
+        columns: ["name", "department_id", "department_name"],
+        answer: "SELECT e.name, d.department_name FROM employees e INNER JOIN departments d ON e.department_id = d.department_id;",
+        keywords: ["select", "from", "employees", "join", "departments", "on"]
+    },
+
+    {
+        level: "intermediate",
+        title: "Replace NULL phone numbers",
+        description: "Show 'Not Available' when phone is NULL.",
+        table: "employees",
+        columns: ["employee_id", "phone"],
+        answer: "SELECT COALESCE(phone, 'Not Available') FROM employees;",
+        keywords: ["select", "coalesce", "phone", "from", "employees"]
+    },
+
+    {
+        level: "interview",
+        title: "Employees above average salary",
+        description: "Find employees earning more than the average salary.",
+        table: "employees",
+        columns: ["employee_id", "name", "salary"],
+        answer: "SELECT * FROM employees WHERE salary > (SELECT AVG(salary) FROM employees);",
+        keywords: ["select", "from", "employees", "where", "salary", "avg"]
+    },
+
+    {
+        level: "interview",
+        title: "Find duplicate names",
+        description: "Find employee names that appear more than once.",
+        table: "employees",
+        columns: ["employee_id", "name"],
+        answer: "SELECT name, COUNT(*) FROM employees GROUP BY name HAVING COUNT(*) > 1;",
+        keywords: ["select", "name", "count", "from", "employees", "group", "by", "having"]
+    },
+
+    {
+        level: "interview",
+        title: "Find second highest salary",
+        description: "Find the second highest distinct salary.",
+        table: "employees",
+        columns: ["employee_id", "name", "salary"],
+        answer: "SELECT MAX(salary) FROM employees WHERE salary < (SELECT MAX(salary) FROM employees);",
+        keywords: ["select", "max", "salary", "from", "employees", "where"]
+    },
+
+    {
+        level: "interview",
+        title: "Employees without department",
+        description: "Find employees who do not have a matching department.",
+        table: "employees + departments",
+        columns: ["name", "department_id"],
+        answer: "SELECT e.name FROM employees e LEFT JOIN departments d ON e.department_id = d.department_id WHERE d.department_id IS NULL;",
+        keywords: ["select", "from", "employees", "left", "join", "departments", "where", "null"]
+    },
+
+    {
+        level: "interview",
+        title: "Top 3 salaries",
+        description: "Display the three highest salaries.",
+        table: "employees",
+        columns: ["employee_id", "name", "salary"],
+        answer: "SELECT * FROM employees ORDER BY salary DESC LIMIT 3;",
+        keywords: ["select", "from", "employees", "order", "by", "salary", "desc", "limit", "3"]
+    }
+
+];
+
+
+
+/* ==========================================
+   VARIABLES
+========================================== */
+
+let currentQuestions = questions;
+
+let currentIndex = 0;
+
+let score = 0;
+
+let answered = false;
+
+
+
+/* ==========================================
+   LOAD QUESTION
+========================================== */
+
+function loadQuestion() {
+
+    const q =
+        currentQuestions[currentIndex];
+
+
+    document.getElementById("title")
+        .textContent = q.title;
+
+
+    document.getElementById("description")
+        .textContent = q.description;
+
+
+    document.getElementById("table")
+        .textContent = q.table;
+
+
+    document.getElementById("level")
+        .textContent =
+        q.level.charAt(0).toUpperCase()
+        + q.level.slice(1);
+
+
+    document.getElementById("counter")
+        .textContent =
+        "Question "
+        + (currentIndex + 1)
+        + " of "
+        + currentQuestions.length;
+
+
+    document.getElementById("questionNumber")
+        .textContent =
+        currentIndex + 1;
+
+
+    document.getElementById("sql")
+        .value = "";
+
+
+    document.getElementById("feedback")
+        .className = "feedback";
+
+
+    document.getElementById("feedback")
+        .textContent = "";
+
+
+    document.getElementById("answer")
+        .className = "answer";
+
+
+    document.getElementById("answer")
+        .innerHTML = "";
+
+
+    const columns =
+        document.getElementById("columns");
+
+
+    columns.innerHTML = "";
+
+
+    q.columns.forEach(function(column) {
+
+        const item =
+            document.createElement("span");
+
+        item.className = "column";
+
+        item.textContent = column;
+
+        columns.appendChild(item);
+
+    });
+
+
+    answered = false;
+
+
+    updateProgress();
+
+}
+
+
+
+/* ==========================================
+   CHECK ANSWER
+========================================== */
+
+function checkAnswer() {
+
+    if (answered) {
+        return;
+    }
+
+
+    const userAnswer =
+        document.getElementById("sql")
+        .value
+        .toLowerCase()
+        .replace(/\s+/g, " ")
+        .trim();
+
+
+    const feedback =
+        document.getElementById("feedback");
+
+
+    if (!userAnswer) {
+
+        feedback.className =
+            "feedback wrong";
+
+        feedback.textContent =
+            "Please write your SQL query first.";
+
+        return;
+
+    }
+
+
+    const q =
+        currentQuestions[currentIndex];
+
+
+    let correct = true;
+
+
+    q.keywords.forEach(function(keyword) {
+
+        if (
+            !userAnswer.includes(
+                keyword.toLowerCase()
+            )
+        ) {
+
+            correct = false;
+
+        }
+
+    });
+
+
+    if (correct) {
+
+        score++;
+
+        answered = true;
+
+
+        document.getElementById("score")
+            .textContent = score;
+
+
+        feedback.className =
+            "feedback correct";
+
+
+        feedback.textContent =
+            "✓ Correct! Great job.";
+
+    } else {
+
+        feedback.className =
+            "feedback wrong";
+
+
+        feedback.textContent =
+            "✗ Not quite. Try again or click Show Answer.";
+
+    }
+
+}
+
+
+
+/* ==========================================
+   SHOW ANSWER
+========================================== */
+
+function showAnswer() {
+
+    const q =
+        currentQuestions[currentIndex];
+
+
+    const answer =
+        document.getElementById("answer");
+
+
+    answer.className =
+        "answer show";
+
+
+    answer.innerHTML = `
+
+        <div class="answer-title">
+            Correct Answer
+        </div>
+
+        <pre>${escapeHTML(q.answer)}</pre>
+
+        <div class="answer-note">
+            💡 Try to understand the query before moving to the next question.
+        </div>
+
+    `;
+
+}
+
+
+
+/* ==========================================
+   CLEAR
+========================================== */
+
+function clearAnswer() {
+
+    document.getElementById("sql")
+        .value = "";
+
+
+    document.getElementById("feedback")
+        .className = "feedback";
+
+
+    document.getElementById("feedback")
+        .textContent = "";
+
+}
+
+
+
+/* ==========================================
+   NEXT
+========================================== */
+
+function nextQuestion() {
+
+    if (
+        currentIndex <
+        currentQuestions.length - 1
+    ) {
+
+        currentIndex++;
+
+        loadQuestion();
+
+    } else {
+
+        showCompleted();
+
+    }
+
+}
+
+
+
+/* ==========================================
+   FILTER
+========================================== */
+
+function filterQuestions(
+    level,
+    button
+) {
+
+    document
+        .querySelectorAll(".filter")
+        .forEach(function(btn) {
+
+            btn.classList.remove("active");
+
+        });
+
+
+    button.classList.add("active");
+
+
+    if (level === "all") {
+
+        currentQuestions =
+            questions;
+
+    } else {
+
+        currentQuestions =
+            questions.filter(function(q) {
+
+                return q.level === level;
+
+            });
+
+    }
+
+
+    currentIndex = 0;
+
+    score = 0;
+
+
+    document.getElementById("score")
+        .textContent = "0";
+
+
+    loadQuestion();
+
+}
+
+
+
+/* ==========================================
+   PROGRESS
+========================================== */
+
+function updateProgress() {
+
+    const percent =
+        (
+            (currentIndex + 1)
+            /
+            currentQuestions.length
+        ) * 100;
+
+
+    document.getElementById("progress")
+        .style.width =
+        percent + "%";
+
+
+    document.getElementById("progressText")
+        .textContent =
+        Math.round(percent) + "%";
+
+}
+
+
+
+/* ==========================================
+   COMPLETE
+========================================== */
+
+function showCompleted() {
+
+    document.getElementById("practiceCard")
+        .innerHTML = `
+
+        <div class="completed">
+
+            <div class="completed-icon">
+                🎉
+            </div>
+
+            <h2>
+                Practice Complete!
+            </h2>
+
+            <p>
+                You completed
+                ${currentQuestions.length}
+                questions.
+            </p>
+
+            <div class="final-score">
+                ${score} /
+                ${currentQuestions.length}
+            </div>
+
+            <p>
+                Keep practicing to improve your SQL skills.
+            </p>
+
+            <br>
+
+            <button
+                class="check"
+                onclick="location.reload()">
+
+                Practice Again
+
+            </button>
+
+        </div>
+
+    `;
+
+}
+
+
+
+/* ==========================================
+   ESCAPE HTML
+========================================== */
+
+function escapeHTML(text) {
+
+    return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+
+/* ==========================================
+   YEAR
+========================================== */
+
+document.getElementById("year")
+    .textContent =
+    new Date().getFullYear();
+
+
+
+/* ==========================================
+   START
+========================================== */
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1155 @@
+/* =================================
+   RESET
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #f7f8fc;
+
+    color: #172033;
+
+    line-height: 1.6;
+
+}
+
+
+button,
+textarea {
+    font-family: inherit;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+
+.container {
+
+    width: 90%;
+
+    max-width: 1100px;
+
+    margin: auto;
+
+}
+
+
+/* =================================
+   NAVBAR
+================================= */
+
+.navbar {
+
+    background: white;
+
+    border-bottom:
+        1px solid #e5e8ef;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+}
+
+
+.nav-container {
+
+    width: 90%;
+
+    max-width: 1100px;
+
+    height: 74px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+.logo {
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+    color: #172033;
+
+}
+
+
+.logo span {
+
+    color: #5b4bdb;
+
+}
+
+
+nav {
+
+    display: flex;
+
+    gap: 25px;
+
+}
+
+
+nav a {
+
+    color: #4f596b;
+
+    font-weight: 600;
+
+}
+
+
+nav a:hover {
+
+    color: #5b4bdb;
+
+}
+
+
+.menu-button {
+
+    display: none;
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+}
+
+
+/* =================================
+   HERO
+================================= */
+
+.hero {
+
+    padding: 75px 0 55px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f0eeff,
+            #ffffff
+        );
+
+}
+
+
+.hero-content {
+
+    text-align: center;
+
+    max-width: 750px;
+
+    margin: auto;
+
+}
+
+
+.hero-label {
+
+    color: #5b4bdb;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+}
+
+
+.hero h1 {
+
+    font-size: 50px;
+
+    line-height: 1.1;
+
+    margin: 12px 0 18px;
+
+}
+
+
+.hero h1 span {
+
+    color: #5b4bdb;
+
+}
+
+
+.hero p {
+
+    font-size: 18px;
+
+    color: #687386;
+
+}
+
+
+/* =================================
+   STATS
+================================= */
+
+.stats {
+
+    max-width: 650px;
+
+    margin: 40px auto 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.stat {
+
+    background: white;
+
+    border:
+        1px solid #e2e6ee;
+
+    border-radius: 12px;
+
+    padding: 17px;
+
+    text-align: center;
+
+}
+
+
+.stat strong {
+
+    display: block;
+
+    color: #5b4bdb;
+
+    font-size: 27px;
+
+}
+
+
+.stat span {
+
+    color: #687386;
+
+    font-size: 14px;
+
+}
+
+
+/* =================================
+   PRACTICE SECTION
+================================= */
+
+.practice-section {
+
+    padding: 70px 0;
+
+}
+
+
+/* =================================
+   FILTERS
+================================= */
+
+.filters {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-bottom: 30px;
+
+}
+
+
+.filter {
+
+    padding: 10px 19px;
+
+    border:
+        1px solid #dce1ea;
+
+    background: white;
+
+    color: #566174;
+
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+
+}
+
+
+.filter:hover {
+
+    border-color: #5b4bdb;
+
+    color: #5b4bdb;
+
+}
+
+
+.filter.active {
+
+    background: #5b4bdb;
+
+    color: white;
+
+    border-color: #5b4bdb;
+
+}
+
+
+/* =================================
+   PRACTICE CARD
+================================= */
+
+.practice-card {
+
+    max-width: 900px;
+
+    margin: auto;
+
+    background: white;
+
+    border:
+        1px solid #e1e5ed;
+
+    border-radius: 18px;
+
+    padding: 35px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(30, 40, 70, 0.06);
+
+}
+
+
+.question-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+
+}
+
+
+.level-badge {
+
+    background: #e9e6ff;
+
+    color: #5141c9;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+}
+
+
+#questionCounter {
+
+    color: #788294;
+
+    font-size: 14px;
+
+}
+
+
+.practice-card h2 {
+
+    font-size: 28px;
+
+    line-height: 1.3;
+
+    margin-bottom: 9px;
+
+}
+
+
+.question-description {
+
+    color: #667184;
+
+    margin-bottom: 23px;
+
+}
+
+
+/* =================================
+   TABLE
+================================= */
+
+.table-box {
+
+    background: #f5f6fa;
+
+    border:
+        1px solid #e1e5ec;
+
+    border-radius: 10px;
+
+    padding: 18px;
+
+    margin-bottom: 23px;
+
+}
+
+
+.table-title {
+
+    font-weight: 700;
+
+    margin-bottom: 12px;
+
+}
+
+
+.table-title code {
+
+    color: #5b4bdb;
+
+}
+
+
+.columns {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+}
+
+
+.column {
+
+    background: white;
+
+    border:
+        1px solid #dce1e9;
+
+    border-radius: 6px;
+
+    padding: 5px 9px;
+
+    font-family: monospace;
+
+    font-size: 13px;
+
+    color: #4f596b;
+
+}
+
+
+/* =================================
+   SQL EDITOR
+================================= */
+
+.editor-label {
+
+    display: block;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+
+}
+
+
+.sql-editor {
+
+    display: block;
+
+    width: 100%;
+
+    min-height: 230px;
+
+    resize: vertical;
+
+    padding: 18px;
+
+    border:
+        1px solid #cbd2de;
+
+    border-radius: 10px;
+
+    background: #111827;
+
+    color: #e5e7eb;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    outline: none;
+
+}
+
+
+.sql-editor:focus {
+
+    border-color: #5b4bdb;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(91, 75, 219, 0.12);
+
+}
+
+
+/* =================================
+   FEEDBACK
+================================= */
+
+.feedback {
+
+    display: none;
+
+    margin-top: 15px;
+
+    padding: 14px 17px;
+
+    border-radius: 9px;
+
+    font-weight: 600;
+
+}
+
+
+.feedback.correct {
+
+    display: block;
+
+    background: #e9f8ef;
+
+    border:
+        1px solid #b9e6ca;
+
+    color: #19743d;
+
+}
+
+
+.feedback.wrong {
+
+    display: block;
+
+    background: #fff0f0;
+
+    border:
+        1px solid #efc1c1;
+
+    color: #a33a3a;
+
+}
+
+
+/* =================================
+   ANSWER
+================================= */
+
+.correct-answer {
+
+    display: none;
+
+    margin-top: 18px;
+
+    border:
+        1px solid #dfe3eb;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+}
+
+
+.correct-answer.visible {
+
+    display: block;
+
+}
+
+
+.answer-title {
+
+    background: #e9e6ff;
+
+    color: #4f3db8;
+
+    padding: 12px 16px;
+
+    font-weight: 800;
+
+}
+
+
+.correct-answer pre {
+
+    margin: 0;
+
+    padding: 18px;
+
+    background: #111827;
+
+    color: #e5e7eb;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    white-space: pre-wrap;
+
+    overflow-x: auto;
+
+}
+
+
+.answer-note {
+
+    padding: 13px 16px;
+
+    background: #f5f6fa;
+
+    color: #687386;
+
+    font-size: 14px;
+
+}
+
+
+/* =================================
+   BUTTONS
+================================= */
+
+.buttons {
+
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    margin-top: 20px;
+
+}
+
+
+.check-button,
+.answer-button,
+.clear-button,
+.next-button {
+
+    border: none;
+
+    padding: 12px 18px;
+
+    border-radius: 8px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+}
+
+
+.check-button {
+
+    background: #5b4bdb;
+
+    color: white;
+
+}
+
+
+.check-button:hover {
+
+    background: #4737c7;
+
+}
+
+
+.answer-button {
+
+    background: #fff4d7;
+
+    color: #855900;
+
+    border:
+        1px solid #efd28c;
+
+}
+
+
+.answer-button:hover {
+
+    background: #ffebba;
+
+}
+
+
+.clear-button {
+
+    background: #eef0f4;
+
+    color: #4e596b;
+
+}
+
+
+.clear-button:hover {
+
+    background: #e3e6ec;
+
+}
+
+
+.next-button {
+
+    background: #172033;
+
+    color: white;
+
+    margin-left: auto;
+
+}
+
+
+.next-button:hover {
+
+    background: #2a3549;
+
+}
+
+
+/* =================================
+   PROGRESS
+================================= */
+
+.progress-container {
+
+    max-width: 900px;
+
+    margin: 25px auto 0;
+
+}
+
+
+.progress-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #667184;
+
+    font-size: 14px;
+
+    margin-bottom: 7px;
+
+}
+
+
+.progress-bar {
+
+    height: 8px;
+
+    background: #e1e4eb;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+}
+
+
+.progress {
+
+    width: 4%;
+
+    height: 100%;
+
+    background: #5b4bdb;
+
+    transition: width 0.3s ease;
+
+}
+
+
+/* =================================
+   CTA
+================================= */
+
+.cta-section {
+
+    padding: 70px 0;
+
+    background: #111827;
+
+    color: white;
+
+}
+
+
+.cta {
+
+    background: #1c2636;
+
+    border:
+        1px solid #303b4e;
+
+    border-radius: 18px;
+
+    padding: 35px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 30px;
+
+}
+
+
+.cta-content > span {
+
+    color: #aaa1ff;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+}
+
+
+.cta h2 {
+
+    font-size: 30px;
+
+    margin: 7px 0;
+
+}
+
+
+.cta p {
+
+    color: #b5bdcb;
+
+}
+
+
+.cta-price {
+
+    text-align: center;
+
+}
+
+
+.old-price {
+
+    color: #929aaa;
+
+    text-decoration: line-through;
+
+    margin-right: 10px;
+
+}
+
+
+.cta-price strong {
+
+    font-size: 36px;
+
+}
+
+
+.course-button {
+
+    display: inline-block;
+
+    margin-top: 13px;
+
+    background: #5b4bdb;
+
+    color: white;
+
+    padding: 12px 19px;
+
+    border-radius: 8px;
+
+    font-weight: 700;
+
+}
+
+
+/* =================================
+   COMPLETED
+================================= */
+
+.completed {
+
+    text-align: center;
+
+    padding: 45px 20px;
+
+}
+
+
+.completed-icon {
+
+    font-size: 55px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.completed h2 {
+
+    font-size: 31px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.completed p {
+
+    color: #687386;
+
+}
+
+
+.final-score {
+
+    color: #5b4bdb;
+
+    font-size: 50px;
+
+    font-weight: 900;
+
+    margin: 18px 0;
+
+}
+
+
+/* =================================
+   FOOTER
+================================= */
+
+footer {
+
+    background: #111827;
+
+    color: #aeb7c7;
+
+    padding: 25px 0;
+
+}
+
+
+.footer-container {
+
+    width: 90%;
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.footer-container h3 {
+
+    color: white;
+
+    margin-bottom: 3px;
+
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 800px) {
+
+    .hero h1 {
+
+        font-size: 40px;
+
+    }
+
+
+    .cta {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .menu-button {
+
+        display: block;
+
+    }
+
+
+    nav {
+
+        display: none;
+
+        position: absolute;
+
+        top: 74px;
+
+        left: 0;
+
+        width: 100%;
+
+        background: white;
+
+        padding: 20px;
+
+        flex-direction: column;
+
+        gap: 15px;
+
+        border-bottom:
+            1px solid #e5e8ef;
+
+    }
+
+
+    nav.open {
+
+        display: flex;
+
+    }
+
+
+    .stats {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .practice-card {
+
+        padding: 22px;
+
+    }
+
+
+    .question-header {
+
+        align-items: flex-start;
+
+        gap: 10px;
+
+    }
+
+
+    .practice-card h2 {
+
+        font-size: 23px;
+
+    }
+
+
+    .next-button {
+
+        margin-left: 0;
+
+    }
+
+
+    .footer-container {
+
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 10px;
+
+    }
+
+}
